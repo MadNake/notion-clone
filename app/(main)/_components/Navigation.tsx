@@ -132,7 +132,9 @@ export const Navigation = () => {
 					isResetting && "transition-all ease-in-out duration-300",
 					isMobile && "left-0 w-full"
 				)}>
-				<nav className="bg-transparent px-3 py-2 w-full">
+				<nav className={cn(
+					"bg-transparent px-3 py-2 w-full",
+					!isCollapsed && "hidden")}>
 					{isCollapsed && <MenuIcon
 						onClick={resetWidth}
 						role="button"
