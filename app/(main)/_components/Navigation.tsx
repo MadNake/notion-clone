@@ -7,6 +7,8 @@ import { useMediaQuery } from "usehooks-ts"
 
 import { cn } from "@/lib/utils";
 
+import { UserItem } from "./UserItem";
+
 export const Navigation = () => {
 	const pathname = usePathname();
 	const isMobile = useMediaQuery("(max-width: 768px)")
@@ -23,14 +25,14 @@ export const Navigation = () => {
 		} else {
 			resetWidth();
 		}
-	// eslint-disable-next-line react-hooks/exhaustive-deps
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [isMobile]);
 
 	useEffect(() => {
 		if (isMobile) {
 			collapse();
 		}
-	}, [pathname, isMobile])
+	}, [pathname, isMobile]);
 
 	const handleMouseDown = (
 		event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -103,7 +105,7 @@ export const Navigation = () => {
 					isMobile && "w-0"
 				)}>
 				<div>
-					<p>Action items</p>
+					<UserItem />
 				</div>
 				<div
 					onClick={collapse}
