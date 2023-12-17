@@ -28,7 +28,7 @@ interface ItemProps {
 	level?: number;
 	onExpand?: () => void;
 	label: string;
-	onClick: () => void;
+	onClick?: () => void;
 	icon: LucideIcon;
 }
 
@@ -55,7 +55,7 @@ export const Item = ({
 	) => {
 		event.stopPropagation();
 		if (!id) return;
-		const promise = archive({id});
+		const promise = archive({ id });
 
 		toast.promise(promise, {
 			loading: "Moving to trash...",
@@ -144,20 +144,20 @@ export const Item = ({
 								role="button"
 								className="opacity-0 group-hover:opacity-100 h-full ml-auto rounded-sm hover:bg-neutral-300 dark:hover:bg-neutral-600"
 							>
-								<MoreHorizontal className="h-4 w-4 text-muted-foreground"/>
+								<MoreHorizontal className="h-4 w-4 text-muted-foreground" />
 							</div>
 						</DropdownMenuTrigger>
 						<DropdownMenuContent
-						className="w-60"
-						align="start"
-						side="right"
-						forceMount
+							className="w-60"
+							align="start"
+							side="right"
+							forceMount
 						>
 							<DropdownMenuItem onClick={onArchive}>
-								<Trash className="h-4 w-4 mr-2"/>
+								<Trash className="h-4 w-4 mr-2" />
 								Delete
 							</DropdownMenuItem>
-							<DropdownMenuSeparator/>
+							<DropdownMenuSeparator />
 							<div className="text-xs text-muted-foreground p-2">
 								Last edited by: {user?.fullName}
 							</div>
