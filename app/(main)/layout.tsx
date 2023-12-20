@@ -6,14 +6,15 @@ import { useConvexAuth } from "convex/react";
 import { Spinner } from "@/components/spinner";
 
 import { Navigation } from "./_components/Navigation";
+import { SeacrhCommand } from "@/components/search-command";
 
 const MainLayout = ({
 	children
-} : {
+}: {
 	children: React.ReactNode
 }) => {
 
-const { isAuthenticated, isLoading } = useConvexAuth()
+	const { isAuthenticated, isLoading } = useConvexAuth()
 
 	if (isLoading) {
 		return (
@@ -31,10 +32,11 @@ const { isAuthenticated, isLoading } = useConvexAuth()
 		<div className="h-full flex dark:bg-[1F1F1F]">
 			<Navigation />
 			<main className="flex-1 h-full overflow-y-auto">
-			{children}
+				<SeacrhCommand />
+				{children}
 			</main>
 		</div>
-	 );
+	);
 }
 
 export default MainLayout;
